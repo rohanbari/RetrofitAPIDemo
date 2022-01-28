@@ -1,6 +1,8 @@
 package com.rohanbari.retrofitapidemo;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,15 @@ public class RepoAdapter extends BaseAdapter {
         Repo repo = repoList.get(position);
 
         binding.itemRepoName.setText(repo.getName());
+        binding.itemRepoDescription.setText(repo.getDescription());
+
+        binding.cardView.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(repo.getHtmlUrl()));
+
+            context.startActivity(intent);
+        });
+
         return binding.getRoot();
     }
 }
