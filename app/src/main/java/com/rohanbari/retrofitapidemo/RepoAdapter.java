@@ -48,6 +48,7 @@ public class RepoAdapter extends BaseAdapter {
         binding.cardView.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(repo.getHtmlUrl()));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             context.startActivity(intent);
         });
